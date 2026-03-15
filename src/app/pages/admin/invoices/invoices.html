@@ -1,0 +1,81 @@
+<div class="surface-card p-4 shadow-2 border-round">
+      <h2 class="m-0 mb-4 text-gray-800">Create New Invoice</h2>
+
+      <div class="grid formgrid p-fluid">
+        <div class="field col-12 md:col-4">
+          <label for="client" class="font-semibold">Select Client</label>
+          <p-select id="client" [options]="clients" [(ngModel)]="selectedClient" optionLabel="businessName" placeholder="Choose a client" [filter]="true"></p-select>
+        </div>
+
+        <div class="field col-12 md:col-4">
+          <label for="issueDate" class="font-semibold">Issue Date</label>
+          <p-date-picker id="issueDate" [(ngModel)]="issueDate" [showIcon]="true"></p-date-picker>
+        </div>
+
+        <div class="field col-12 md:col-4">
+          <label for="dueDate" class="font-semibold">Due Date</label>
+          <p-date-picker id="dueDate" [(ngModel)]="dueDate" [showIcon]="true"></p-date-picker>
+        </div>
+      </div>
+
+      <hr class="my-4 border-gray-200 border-top-1 border-none" />
+
+      <h3 class="mb-3 text-gray-800">Line Items</h3>
+      <p-table [value]="items" responsiveLayout="scroll" styleClass="p-datatable-sm mb-4">
+        <ng-template pTemplate="header">
+          <tr>
+            <th style="width: 50%">Description</th>
+            <th style="width: 15%">Quantity</th>
+            <th style="width: 20%">Unit Price (₹)</th>
+            <th style="width: 10%">Total (₹)</th>
+            <th style="width: 5%"></th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-item let-i="rowIndex">
+          <tr>
+            <td>
+              <input pInputText type="text" [(ngModel)]="item.description" class="w-full" placeholder="e.g. Website Hosting" />
+            </td>
+            <td>
+              <p-inputNumber [(ngModel)]="item.quantity" [min]="1" (onInput)="calculateTotals()" class="w-full"></p-inputNumber>
+            </td>
+            <td>
+              <p-inputNumber [(ngModel)]="item.unitPrice" mode="currency" currency="INR" (onInput)="calculateTotals()" class="w-full"></p-inputNumber>
+            </td>
+            <td class="font-bold text-gray-800">
+              ₹{{ (item.quantity * item.unitPrice) | number:'1.2-2' }}
+            </td>
+            <td>
+              <p-button icon="pi pi-trash" severity="danger" [text]="true" (onClick)="removeItem(i)"></p-button>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+
+      <div class="flex justify-content-between align-items-start">
+        <div class="w-6">
+          <p-button label="Add Line Item" icon="pi pi-plus" [outlined]="true" (onClick)="addItem()" size="small"></p-button>
+          
+          <div class="mt-4">
+            <label for="notes" class="font-semibold block mb-2">Notes / Terms</label>
+            <textarea pInputTextarea id="notes" [(ngModel)]="notes" rows="3" class="w-full" placeholder="Thank you for your business!"></textarea>
+          </div>
+        </div>
+
+        <div class="w-4 surface-100 p-3 border-round">
+          <div class="flex justify-content-between mb-2">
+            <span class="font-semibold text-gray-600">Subtotal:</span>
+            <span class="font-bold">₹{{ displayTotal | number:'1.2-2' }}</span>
+          </div>
+          <hr class="border-gray-300 border-top-1 border-none my-2" />
+          <div class="flex justify-content-between text-xl">
+            <span class="font-bold text-gray-800">Total:</span>
+            <span class="font-bold text-primary">₹{{ displayTotal | number:'1.2-2' }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex justify-content-end mt-5">
+        <p-button label="Save Invoice" icon="pi pi-save" size="large" (onClick)="saveInvoice()" [disabled]="!isValid()"></p-button>
+      </div>
+    </div>
