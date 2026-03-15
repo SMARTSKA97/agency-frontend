@@ -1,0 +1,54 @@
+<section class="cafe-shell">
+  <header class="cafe-topbar">
+    <a class="cafe-brand" href="/websites/northbean-cafe/home">Northbean Cafe</a>
+    <nav class="cafe-nav">
+      <a
+        *ngFor="let item of nav"
+        [href]="'/websites/northbean-cafe/' + item.page"
+        [class.active]="currentPage === item.page"
+      >
+        {{ item.label }}
+      </a>
+    </nav>
+    <a class="cafe-back" href="/websites">All demos</a>
+  </header>
+
+  <section class="cafe-hero" *ngIf="currentPage === 'home'">
+    <div>
+      <span class="cafe-kicker">Community Cafe Demo</span>
+      <h1>Neighborhood Coffee, Modern Brand Presence.</h1>
+      <p>
+        A complete local cafe website concept shaped for repeat customers, warm brand storytelling, and menu-first browsing.
+      </p>
+      <div class="cafe-actions">
+        <a class="cafe-cta" href="/websites/northbean-cafe/menu">See Menu</a>
+        <a class="cafe-cta cafe-cta--muted" href="/websites/northbean-cafe/events">View Events</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="cafe-grid" *ngIf="currentPage === 'home'">
+    <article class="cafe-card" *ngFor="let block of blocks">
+      <h2>{{ block.title }}</h2>
+      <p>{{ block.text }}</p>
+    </article>
+  </section>
+
+  <section class="cafe-banner" *ngIf="currentPage === 'menu'">
+    <h2>House Menu</h2>
+    <div class="cafe-menu-list">
+      <div class="cafe-menu-item" *ngFor="let line of menu">
+        <span>{{ line.item }}</span>
+        <strong>{{ line.price }}</strong>
+      </div>
+    </div>
+  </section>
+
+  <section class="cafe-banner" *ngIf="currentPage === 'events'">
+    <h2>Weekly Community Events</h2>
+    <div class="cafe-event-list">
+      <span *ngFor="let event of events">{{ event }}</span>
+    </div>
+    <p>Designed as a local engagement page to turn casual visitors into regulars.</p>
+  </section>
+</section>

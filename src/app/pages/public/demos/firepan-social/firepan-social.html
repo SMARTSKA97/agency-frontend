@@ -1,0 +1,50 @@
+<section class="fire-shell">
+  <header class="fire-topbar">
+    <a class="fire-brand" href="/websites/firepan-social/home">Firepan Social</a>
+    <nav class="fire-nav">
+      <a
+        *ngFor="let item of nav"
+        [href]="'/websites/firepan-social/' + item.page"
+        [class.active]="currentPage === item.page"
+      >
+        {{ item.label }}
+      </a>
+    </nav>
+    <a class="fire-back" href="/websites">All demos</a>
+  </header>
+
+  <header class="fire-hero" *ngIf="currentPage === 'home'">
+    <div class="fire-hero__badge">Fast Casual Demo</div>
+    <h1>Fast Casual Branding with Conversion-Heavy Flow.</h1>
+    <p>
+      A full local business site concept for grills and street-food brands with high-energy UI and action-first content blocks.
+    </p>
+    <div class="fire-actions">
+      <a class="fire-cta" href="/websites/firepan-social/order">Order Online</a>
+      <a class="fire-cta fire-cta--muted" href="/websites/firepan-social/offers">View Offers</a>
+    </div>
+  </header>
+
+  <section class="fire-offers" *ngIf="currentPage === 'offers' || currentPage === 'home'">
+    <article class="fire-offer" *ngFor="let offer of offers">
+      <small>{{ offer.label }}</small>
+      <h2>{{ offer.detail }}</h2>
+    </article>
+  </section>
+
+  <section class="fire-order" *ngIf="currentPage === 'order'">
+    <h2>Delivery Zones</h2>
+    <p>Built as a local-order conversion page with strong CTA hierarchy and operational clarity.</p>
+    <div class="delivery-list">
+      <span *ngFor="let area of deliveryAreas">{{ area }}</span>
+    </div>
+    <a class="fire-cta" href="/websites/firepan-social/home">Back to Home</a>
+  </section>
+
+  <section class="fire-strip" *ngIf="currentPage === 'home'">
+    <span>Delivery First</span>
+    <span>Combo Ready</span>
+    <span>High Contrast CTA</span>
+    <span>Social Proof Layout</span>
+  </section>
+</section>

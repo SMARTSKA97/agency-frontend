@@ -1,63 +1,70 @@
-<div class="flex h-screen bg-gray-50 overflow-hidden">
+<div class="admin-shell">
+  <aside class="admin-sidebar glass-panel">
+    <a class="brand-mark admin-brand" routerLink="/">
+      <span class="brand-mark__dot"></span>
+      <div>
+        <span>SKA97</span>
+        <small>Admin Studio</small>
+      </div>
+    </a>
 
-  <aside class="w-16rem bg-white border-right-1 border-gray-200 flex flex-column h-full">
-    <div class="h-4rem flex align-items-center px-4 border-bottom-1 border-gray-200">
-      <span class="text-xl font-bold text-primary cursor-pointer" routerLink="/">AgencyPro</span>
-      <span class="ml-2 text-xs bg-primary text-white px-2 py-1 border-round">Admin</span>
-    </div>
-
-    <nav class="flex-1 overflow-y-auto py-3 px-2 flex flex-column gap-2">
-      <a routerLink="/admin/dashboard" routerLinkActive="bg-blue-50 text-primary font-semibold"
-        class="p-3 border-round text-gray-700 cursor-pointer no-underline flex align-items-center hover:bg-gray-100 transition-colors">
-        <i class="pi pi-home mr-3 text-lg"></i>
-        <span>Dashboard</span>
-      </a>
-
-      <div class="text-xs font-bold text-gray-400 uppercase tracking-wide mt-3 mb-1 px-3">Management</div>
-
-      <a routerLink="/admin/clients" routerLinkActive="bg-blue-50 text-primary font-semibold"
-        class="p-3 border-round text-gray-700 cursor-pointer no-underline flex align-items-center hover:bg-gray-100 transition-colors">
-        <i class="pi pi-users mr-3 text-lg"></i>
-        <span>Clients</span>
-      </a>
-
-      <a routerLink="/admin/invoices" routerLinkActive="bg-blue-50 text-primary font-semibold"
-        class="p-3 border-round text-gray-700 cursor-pointer no-underline flex align-items-center hover:bg-gray-100 transition-colors">
-        <i class="pi pi-file-pdf mr-3 text-lg"></i>
-        <span>Invoices</span>
+    <nav class="admin-nav">
+      <a
+        *ngFor="let item of navItems"
+        [routerLink]="item.routerLink"
+        routerLinkActive="is-active"
+        class="admin-nav__link"
+      >
+        <i [class]="item.icon"></i>
+        <span>{{ item.label }}</span>
       </a>
     </nav>
+
+    <div class="admin-sidebar__footer">
+      <div class="toolbar-title">
+        <small>Workspace Look</small>
+        <p>Switch the palette or flip to dark mode without changing the layout.</p>
+      </div>
+      <p-select
+        [options]="themeService.themeOptions()"
+        [ngModel]="themeService.themeId()"
+        (ngModelChange)="themeService.setTheme($event)"
+        optionLabel="label"
+        optionValue="value"
+        appendTo="body"
+      ></p-select>
+      <p-button
+        [label]="themeService.mode() === 'dark' ? 'Light mode' : 'Dark mode'"
+        [icon]="themeService.mode() === 'dark' ? 'pi pi-sun' : 'pi pi-moon'"
+        (onClick)="themeService.toggleMode()"
+      ></p-button>
+    </div>
   </aside>
 
-  <div class="flex-1 flex flex-column min-w-0">
-
-    <header
-      class="h-4rem bg-white border-bottom-1 border-gray-200 flex align-items-center justify-content-between px-4">
-      <div class="text-xl font-medium text-gray-800">
+  <div class="admin-main">
+    <header class="admin-header glass-panel">
+      <div class="toolbar-title">
+        <small>Operations</small>
+        <h2>Minimal workspace for clients, quotes, and invoices.</h2>
       </div>
 
-      <div class="flex align-items-center gap-4">
-        <p-avatar icon="pi pi-bell"
-          styleClass="bg-gray-100 text-gray-600 cursor-pointer hover:bg-gray-200 transition-colors"
-          shape="circle"></p-avatar>
+      <div class="admin-header__actions">
+        <p-avatar icon="pi pi-bell" styleClass="admin-avatar-chip" shape="circle"></p-avatar>
 
-        <div class="border-left-1 border-gray-300 h-2rem"></div>
-
-        <div class="flex align-items-center gap-2 cursor-pointer">
-          <p-avatar image="assets/profile-placeholder.jpg" size="large" shape="circle" class="shadow-1"></p-avatar>
-          <div class="flex flex-column hidden sm:flex">
-            <span class="font-semibold text-sm">Admin User</span>
-            <span class="text-xs text-gray-500">owner</span>
+        <div class="admin-user">
+          <p-avatar image="assets/profile-placeholder.jpg" size="large" shape="circle"></p-avatar>
+          <div>
+            <strong>Admin User</strong>
+            <small>owner</small>
           </div>
-          <p-button icon="pi pi-sign-out" [text]="true" severity="danger" pTooltip="Logout"
-            (onClick)="logout()"></p-button>
         </div>
+
+        <p-button icon="pi pi-sign-out" [text]="true" severity="danger" (onClick)="logout()"></p-button>
       </div>
     </header>
 
-    <main class="flex-1 overflow-y-auto p-4 sm:p-6">
+    <main class="admin-content">
       <router-outlet></router-outlet>
     </main>
-
   </div>
 </div>

@@ -1,23 +1,39 @@
-<div class="flex align-items-center justify-content-center min-h-screen bg-gray-50">
-    <p-card styleClass="shadow-4 w-full sm:w-25rem">
-        <div class="text-center mb-5">
-            <div class="text-900 text-3xl font-medium mb-3">Welcome Back</div>
-            <span class="text-600 font-medium line-height-3">Sign in to manage your agency</span>
+<section class="login-page">
+  <div class="login-panel glass-panel">
+    <div class="login-copy">
+      <span class="section-label">Admin access</span>
+      <h1 class="section-title">A cleaner control room for running the agency.</h1>
+      <p class="supporting-copy">
+        Sign in to manage client records, shape invoices, and keep the back office consistent with the public brand.
+      </p>
+    </div>
+
+    <p-card styleClass="login-card">
+      <div class="toolbar-title">
+        <small>Welcome back</small>
+        <h2>Sign in</h2>
+      </div>
+
+      <div class="login-form">
+        <div class="field-block">
+          <label for="email">Email</label>
+          <input id="email" type="text" pInputText [(ngModel)]="credentials.email" />
         </div>
 
-        <div>
-            <label for="email" class="block text-900 font-medium mb-2">Email</label>
-            <input id="email" type="text" pInputText class="w-full mb-3" [(ngModel)]="credentials.email" />
-
-            <label for="password" class="block text-900 font-medium mb-2">Password</label>
-            <p-password id="password" [toggleMask]="true" styleClass="w-full mb-3" inputStyleClass="w-full"
-                [(ngModel)]="credentials.password" [feedback]="false"></p-password>
-
-            <div class="flex align-items-center justify-content-between mb-6">
-                <a class="font-medium no-underline ml-2 text-primary text-right cursor-pointer">Forgot password?</a>
-            </div>
-
-            <p-button label="Sign In" icon="pi pi-user" styleClass="w-full" (onClick)="onLogin()"></p-button>
+        <div class="field-block">
+          <label for="password">Password</label>
+          <p-password
+            id="password"
+            [toggleMask]="true"
+            styleClass="w-full"
+            inputStyleClass="w-full"
+            [(ngModel)]="credentials.password"
+            [feedback]="false"
+          ></p-password>
         </div>
+
+        <p-button label="Sign in" icon="pi pi-arrow-right" styleClass="w-full" (onClick)="onLogin()"></p-button>
+      </div>
     </p-card>
-</div>
+  </div>
+</section>

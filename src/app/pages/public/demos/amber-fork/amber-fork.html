@@ -1,0 +1,71 @@
+<section class="demo-shell amber-theme">
+  <header class="demo-topbar">
+    <a class="brand" href="/websites/amber-fork/home">Amber Fork</a>
+    <nav class="demo-nav">
+      <a
+        *ngFor="let item of nav"
+        [href]="'/websites/amber-fork/' + item.page"
+        [class.active]="currentPage === item.page"
+      >
+        {{ item.label }}
+      </a>
+    </nav>
+    <a class="back-link" href="/websites">All demos</a>
+  </header>
+
+  <section class="demo-hero" *ngIf="currentPage === 'home'">
+    <div class="demo-hero__content">
+      <span class="demo-kicker">Fine Dining Demo</span>
+      <h1>Fine Dining Crafted as an Evening Experience.</h1>
+      <p>
+        A complete local premium-restaurant website with cinematic storytelling, high-end presentation, and conversion
+        points for reservations.
+      </p>
+      <div class="demo-actions">
+        <a class="cta" href="/websites/amber-fork/reservations">Reserve Table</a>
+        <a class="cta cta-muted" href="/websites/amber-fork/menu">Explore Menu</a>
+      </div>
+    </div>
+    <div class="demo-hero__panel">
+      <small>Open Hours</small>
+      <strong>Mon-Sun, 6:00 PM - 11:30 PM</strong>
+      <small>Location</small>
+      <strong>Skyline District, New Delhi</strong>
+    </div>
+  </section>
+
+  <section class="demo-grid" *ngIf="currentPage === 'home'">
+    <article class="demo-card" *ngFor="let item of highlights">
+      <h2>{{ item.title }}</h2>
+      <p>{{ item.text }}</p>
+    </article>
+  </section>
+
+  <section class="menu-card" *ngIf="currentPage === 'menu'">
+    <div class="menu-card__header">
+      <small>Chef Picks</small>
+      <h2>Signature Menu</h2>
+    </div>
+    <div class="menu-list">
+      <div class="menu-item" *ngFor="let item of menu">
+        <span>{{ item.dish }}</span>
+        <strong>{{ item.price }}</strong>
+      </div>
+    </div>
+  </section>
+
+  <section class="reserve-card" *ngIf="currentPage === 'reservations'">
+    <div class="menu-card__header">
+      <small>Reservation</small>
+      <h2>Book Your Evening</h2>
+    </div>
+    <p>
+      Designed as a conversion-focused booking page for local high-end restaurants, with clear table slot selection and
+      direct reservation intent.
+    </p>
+    <div class="slot-list">
+      <span *ngFor="let slot of reservationSlots">{{ slot }}</span>
+    </div>
+    <a class="cta" href="/websites/amber-fork/home">Back to Home</a>
+  </section>
+</section>

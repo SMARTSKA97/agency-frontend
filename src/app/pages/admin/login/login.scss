@@ -1,0 +1,31 @@
+.login-page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 1.25rem;
+}
+
+.login-panel {
+  width: min(1040px, 100%);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 420px);
+  gap: 1.5rem;
+  padding: 1.5rem;
+}
+
+.login-copy,
+.login-card,
+.login-form {
+  display: grid;
+  gap: 1rem;
+}
+
+.login-copy {
+  align-content: center;
+}
+
+@media (max-width: 900px) {
+  .login-panel {
+    grid-template-columns: 1fr;
+  }
+}

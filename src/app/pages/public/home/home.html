@@ -1,74 +1,130 @@
-<div class="text-center p-6 bg-white shadow-1 mb-4">
-      <h1 class="text-5xl font-extrabold mb-3 text-gray-900">High-Performance Websites for Local Restaurants</h1>
-      <p class="text-xl text-gray-600 mb-5 max-w-3xl mx-auto">
-        Stop losing customers to delivery apps. Get a blazing-fast, custom website that drives direct orders, builds trust, and showcases your menu perfectly.
+<section class="page-shell services-page page-stack">
+  <div class="services-hero glass-panel">
+    <div class="page-intro">
+      <span class="section-label">Website Builder</span>
+      <h1 class="section-title">3 full demo websites for restaurant and cafe showcases.</h1>
+      <p class="supporting-copy">
+        This section demonstrates fully designed website directions that can be customized for real hospitality brands.
+        Each demo is structured as a complete presentation site, not a partial mock.
       </p>
-      <div class="flex justify-content-center gap-3">
-        <p-button label="View Live Demos" icon="pi pi-desktop" size="large"></p-button>
-        <p-button label="Get a Quote" icon="pi pi-arrow-right" size="large" severity="secondary"></p-button>
-      </div>
-    </div>
-
-    <div class="grid px-6 max-w-7xl mx-auto">
-      
-      <div class="col-12 md:col-6 p-3">
-        <h2 class="text-3xl font-bold mb-4">Why Work With Me?</h2>
-        <p class="text-lg text-gray-700 line-height-3 mb-4">
-          I don't just use basic website builders. I engineer full-stack, scalable web applications tailored to your exact business needs. 
-        </p>
-        <div class="flex flex-column gap-3">
-          <div class="flex align-items-center gap-2">
-            <i class="pi pi-check-circle text-green-500 text-xl"></i>
-            <span class="font-semibold text-lg">Angular Frontend:</span> <span>Lightning-fast, dynamic user interfaces.</span>
+      <div class="feature-list">
+        <div class="feature-item">
+          <span class="feature-icon"><i class="pi pi-bolt"></i></span>
+          <div>
+            <strong>Fast and complete demos</strong>
+            <p class="muted-copy">Complete showcase pages with hierarchy, conversion flow, and distinct visual style.</p>
           </div>
-          <div class="flex align-items-center gap-2">
-            <i class="pi pi-check-circle text-green-500 text-xl"></i>
-            <span class="font-semibold text-lg">.NET Core API:</span> <span>Enterprise-grade, secure backend logic.</span>
-          </div>
-          <div class="flex align-items-center gap-2">
-            <i class="pi pi-check-circle text-green-500 text-xl"></i>
-            <span class="font-semibold text-lg">PostgreSQL & Redis:</span> <span>Robust, highly-available data management.</span>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon"><i class="pi pi-palette"></i></span>
+          <div>
+            <strong>Unique brand direction</strong>
+            <p class="muted-copy">Every concept has a different personality while keeping a clean and minimal structure.</p>
           </div>
         </div>
       </div>
-
-      <div class="col-12 md:col-6 p-3">
-        <p-card header="Website Cost Calculator" subheader="Transparent pricing for your restaurant" styleClass="shadow-3">
-          
-          <div class="flex flex-column gap-4">
-            <div class="flex flex-column gap-2">
-              <label for="pages" class="font-semibold">Number of Pages</label>
-              <p-inputNumber inputId="pages" [(ngModel)]="calc.pages" (onInput)="calculateTotal()" [min]="1" [max]="20" [showButtons]="true"></p-inputNumber>
-            </div>
-
-            <div class="flex align-items-center gap-2">
-              <p-checkbox [(ngModel)]="calc.menuPage" (onChange)="calculateTotal()" [binary]="true" inputId="menu"></p-checkbox>
-              <label for="menu">Include Interactive Menu Page (₹1000)</label>
-            </div>
-
-            <div class="flex align-items-center gap-2">
-              <p-checkbox [(ngModel)]="calc.photoGallery" (onChange)="calculateTotal()" [binary]="true" inputId="gallery"></p-checkbox>
-              <label for="gallery">Include Photo Gallery (₹800)</label>
-            </div>
-
-            <div class="flex align-items-center gap-2">
-              <p-checkbox [(ngModel)]="calc.domain" (onChange)="calculateTotal()" [binary]="true" inputId="domain"></p-checkbox>
-              <label for="domain">Domain & Hosting Setup (₹2000)</label>
-            </div>
-            
-            <div class="flex align-items-center gap-2">
-              <p-checkbox [(ngModel)]="calc.maintenance" (onChange)="calculateTotal()" [binary]="true" inputId="maintenance"></p-checkbox>
-              <label for="maintenance">1 Year Maintenance Plan (₹2400)</label>
-            </div>
-
-            <p-divider></p-divider>
-
-            <div class="flex justify-content-between align-items-center mt-2">
-              <span class="text-xl font-bold text-gray-700">Estimated Price:</span>
-              <span class="text-3xl font-extrabold text-primary">₹{{ totalCost }}</span>
-            </div>
-          </div>
-        </p-card>
-      </div>
-
     </div>
+
+    <p-card styleClass="services-calculator">
+      <ng-template pTemplate="header">
+        <div class="toolbar-title">
+          <small>Live estimator</small>
+          <h2>Website scope calculator</h2>
+        </div>
+      </ng-template>
+
+      <div class="services-form">
+        <div class="field-block">
+          <label for="pages">Number of pages</label>
+          <p-inputNumber
+            inputId="pages"
+            [(ngModel)]="calc.pages"
+            (onInput)="calculateTotal()"
+            [min]="1"
+            [max]="20"
+            [showButtons]="true"
+          ></p-inputNumber>
+        </div>
+
+        <div class="services-options">
+          <label class="option-row" for="menu">
+            <p-checkbox [(ngModel)]="calc.menuPage" (onChange)="calculateTotal()" [binary]="true" inputId="menu"></p-checkbox>
+            <span>Interactive menu page <strong>INR 1000</strong></span>
+          </label>
+          <label class="option-row" for="gallery">
+            <p-checkbox [(ngModel)]="calc.photoGallery" (onChange)="calculateTotal()" [binary]="true" inputId="gallery"></p-checkbox>
+            <span>Photo gallery <strong>INR 800</strong></span>
+          </label>
+          <label class="option-row" for="domain">
+            <p-checkbox [(ngModel)]="calc.domain" (onChange)="calculateTotal()" [binary]="true" inputId="domain"></p-checkbox>
+            <span>Domain and hosting setup <strong>INR 2000</strong></span>
+          </label>
+          <label class="option-row" for="maintenance">
+            <p-checkbox [(ngModel)]="calc.maintenance" (onChange)="calculateTotal()" [binary]="true" inputId="maintenance"></p-checkbox>
+            <span>1 year maintenance <strong>INR 2400</strong></span>
+          </label>
+        </div>
+
+        <p-divider></p-divider>
+
+        <div class="services-total">
+          <div>
+            <small>Estimated package</small>
+            <strong>INR {{ totalCost }}</strong>
+          </div>
+          <p-button label="Start a project" icon="pi pi-arrow-right" severity="secondary"></p-button>
+        </div>
+      </div>
+    </p-card>
+  </div>
+
+  <div class="website-demo-grid">
+    <article class="section-card website-demo website-demo--bistro">
+      <div class="website-demo__meta">Full Demo 01</div>
+      <h2>Amber Fork - Fine Dining</h2>
+      <p class="muted-copy">
+        A premium fine-dining direction with strong imagery, reservation sections, tasting narrative, and upscale brand tone.
+      </p>
+      <div class="pill-row">
+        <span class="pill-chip">Reservations</span>
+        <span class="pill-chip">Chef story</span>
+        <span class="pill-chip">Seasonal menu</span>
+      </div>
+      <a class="demo-link" routerLink="/websites/amber-fork/home">
+        View Multi-Page Demo
+      </a>
+    </article>
+
+    <article class="section-card website-demo website-demo--cafe">
+      <div class="website-demo__meta">Full Demo 02</div>
+      <h2>Northbean Cafe - Community Style</h2>
+      <p class="muted-copy">
+        A warm cafe concept focused on menu clarity, daily specials, events, and a friendly lifestyle-driven presentation.
+      </p>
+      <div class="pill-row">
+        <span class="pill-chip">Coffee menu</span>
+        <span class="pill-chip">Events</span>
+        <span class="pill-chip">Daily specials</span>
+      </div>
+      <a class="demo-link" routerLink="/websites/northbean-cafe/home">
+        View Multi-Page Demo
+      </a>
+    </article>
+
+    <article class="section-card website-demo website-demo--street">
+      <div class="website-demo__meta">Full Demo 03</div>
+      <h2>Firepan Social - Fast Casual</h2>
+      <p class="muted-copy">
+        A bold fast-casual direction for grills, burgers, and street-food brands with strong CTA blocks and offer sections.
+      </p>
+      <div class="pill-row">
+        <span class="pill-chip">Delivery CTA</span>
+        <span class="pill-chip">Combo promos</span>
+        <span class="pill-chip">Social proof</span>
+      </div>
+      <a class="demo-link" routerLink="/websites/firepan-social/home">
+        View Multi-Page Demo
+      </a>
+    </article>
+  </div>
+</section>

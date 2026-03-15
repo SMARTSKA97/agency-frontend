@@ -1,0 +1,176 @@
+.fire-shell {
+  width: min(1120px, calc(100vw - 2rem));
+  margin: 1rem auto;
+  display: grid;
+  gap: 1rem;
+}
+
+.fire-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.8rem;
+  border-radius: 18px;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid var(--surface-border);
+  background: var(--surface-1);
+}
+
+.fire-brand {
+  font-weight: 900;
+  letter-spacing: -0.03em;
+}
+
+.fire-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.fire-nav a,
+.fire-back {
+  padding: 0.5rem 0.8rem;
+  border-radius: 999px;
+  color: var(--text-secondary);
+  font-weight: 800;
+}
+
+.fire-nav a.active {
+  background: rgba(239, 68, 68, 0.18);
+  color: #b91c1c;
+}
+
+.fire-hero {
+  border-radius: 30px;
+  padding: 1.5rem;
+  border: 1px solid var(--surface-border);
+  background:
+    radial-gradient(circle at top left, rgba(239, 68, 68, 0.25), transparent 42%),
+    radial-gradient(circle at top right, rgba(249, 115, 22, 0.18), transparent 38%),
+    var(--surface-1);
+}
+
+.fire-hero__badge {
+  width: fit-content;
+  padding: 0.35rem 0.8rem;
+  border-radius: 999px;
+  background: rgba(239, 68, 68, 0.18);
+  color: #b91c1c;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.76rem;
+}
+
+.fire-hero h1 {
+  margin: 0.8rem 0 0.55rem;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  letter-spacing: -0.04em;
+  line-height: 0.94;
+}
+
+.fire-hero p {
+  margin: 0;
+  max-width: 62ch;
+  color: var(--text-secondary);
+}
+
+.fire-actions {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
+
+.fire-cta {
+  display: inline-flex;
+  width: fit-content;
+  padding: 0.68rem 0.95rem;
+  border-radius: 999px;
+  background: #b91c1c;
+  color: #fff;
+  font-weight: 800;
+}
+
+.fire-cta--muted {
+  background: var(--surface-2);
+  color: var(--text-primary);
+}
+
+.fire-offers {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.fire-offer,
+.fire-order {
+  border-radius: 22px;
+  padding: 1rem;
+  border: 1px solid var(--surface-border);
+  background: var(--surface-1);
+}
+
+.fire-offer small {
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.fire-offer h2 {
+  margin: 0.5rem 0 0;
+  font-size: 1.2rem;
+  letter-spacing: -0.02em;
+}
+
+.fire-order h2 {
+  margin: 0 0 0.45rem;
+}
+
+.fire-order p {
+  margin: 0;
+  color: var(--text-secondary);
+}
+
+.delivery-list {
+  margin: 0.8rem 0 1rem;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.delivery-list span {
+  padding: 0.5rem 0.75rem;
+  border-radius: 999px;
+  background: var(--surface-2);
+  border: 1px solid var(--surface-border);
+}
+
+.fire-strip {
+  border-radius: 20px;
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--surface-border);
+  background: var(--surface-2);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  justify-content: space-between;
+}
+
+.fire-strip span {
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+  background: var(--surface-1);
+  font-weight: 700;
+}
+
+@media (max-width: 900px) {
+  .fire-topbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .fire-offers {
+    grid-template-columns: 1fr;
+  }
+}

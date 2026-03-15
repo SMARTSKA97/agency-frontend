@@ -1,0 +1,38 @@
+.portfolio-page {
+  padding: 1rem 0 0;
+}
+
+.portfolio-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(320px, 0.9fr);
+  gap: 1.5rem;
+  padding: 1.5rem;
+}
+
+.portfolio-hero__card {
+  display: grid;
+  align-content: start;
+  gap: 1.25rem;
+}
+
+.portfolio-avatar {
+  width: 100%;
+  max-width: 18rem;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 32px;
+  background: var(--surface-2);
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+@media (max-width: 960px) {
+  .portfolio-hero,
+  .portfolio-grid {
+    grid-template-columns: 1fr;
+  }
+}

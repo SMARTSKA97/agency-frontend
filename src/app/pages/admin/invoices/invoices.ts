@@ -7,6 +7,7 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { InputTextModule } from 'primeng/inputtext';
 import { SelectModule } from 'primeng/select';
 import { TableModule } from 'primeng/table';
+import { TextareaModule } from 'primeng/textarea';
 import { CreateInvoiceRequest, Invoice, InvoiceItemDto } from '../../../core/services/invoice';
 import { Client, ClientModel } from '../../../core/services/client';
 
@@ -14,7 +15,7 @@ import { Client, ClientModel } from '../../../core/services/client';
   selector: 'app-invoices',
   imports: [CommonModule, FormsModule, ButtonModule, SelectModule, 
     DatePickerModule, InputTextModule, InputNumberModule, 
-    InputTextModule, TableModule],
+    InputTextModule, TableModule, TextareaModule],
   templateUrl: './invoices.html',
   styleUrl: './invoices.scss',
 })
@@ -39,6 +40,7 @@ export class Invoices implements OnInit{
 
   ngOnInit() {
     this.loadClients();
+    this.calculateTotals();
   }
 
   loadClients() {

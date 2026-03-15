@@ -22,6 +22,30 @@ export const routes: Routes = [
         loadComponent: () => import('./pages/public/home/home').then(m => m.Home)
       },
       {
+        path: 'websites/amber-fork',
+        loadComponent: () => import('./pages/public/demos/amber-fork/amber-fork').then(m => m.AmberFork)
+      },
+      {
+        path: 'websites/amber-fork/:page',
+        loadComponent: () => import('./pages/public/demos/amber-fork/amber-fork').then(m => m.AmberFork)
+      },
+      {
+        path: 'websites/northbean-cafe',
+        loadComponent: () => import('./pages/public/demos/northbean-cafe/northbean-cafe').then(m => m.NorthbeanCafe)
+      },
+      {
+        path: 'websites/northbean-cafe/:page',
+        loadComponent: () => import('./pages/public/demos/northbean-cafe/northbean-cafe').then(m => m.NorthbeanCafe)
+      },
+      {
+        path: 'websites/firepan-social',
+        loadComponent: () => import('./pages/public/demos/firepan-social/firepan-social').then(m => m.FirepanSocial)
+      },
+      {
+        path: 'websites/firepan-social/:page',
+        loadComponent: () => import('./pages/public/demos/firepan-social/firepan-social').then(m => m.FirepanSocial)
+      },
+      {
         path: 'contact',
         loadComponent: () => import('./pages/public/contact/contact').then(m => m.Contact)
       }

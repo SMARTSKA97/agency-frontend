@@ -1,30 +1,24 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { MenuItem } from 'primeng/api';
-import { Menubar } from 'primeng/menubar';
+import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { RouterModule, RouterOutlet } from '@angular/router';
+import { ButtonModule } from 'primeng/button';
+import { SelectModule } from 'primeng/select';
+import { ThemeService } from '../../core/services/theme';
 
 @Component({
   selector: 'app-public-layout',
-  imports: [RouterOutlet,Menubar,CommonModule],
+  imports: [RouterOutlet, CommonModule, RouterModule, FormsModule, SelectModule, ButtonModule],
   templateUrl: './public-layout.html',
   styleUrl: './public-layout.scss',
 })
-export class PublicLayout implements OnInit {
-  items: MenuItem[] | undefined;
+export class PublicLayout {
+  readonly navItems = [
+    { label: 'Portfolio', routerLink: '/' },
+    { label: 'Projects', routerLink: '/projects' },
+    { label: 'Web Services', routerLink: '/websites' },
+    { label: 'Contact', routerLink: '/contact' },
+  ];
 
-  ngOnInit() {
-    this.items = [
-      { label: 'Portfolio', icon: 'pi pi-fw pi-user', routerLink: '/' },
-      { label: 'Projects', icon: 'pi pi-fw pi-github', routerLink: '/projects' },
-      { label: 'Web Services', icon: 'pi pi-fw pi-desktop', routerLink: '/websites' },
-      { label: 'Contact', icon: 'pi pi-fw pi-envelope', routerLink: '/contact' },
-      { 
-        label: 'Client Login', 
-        icon: 'pi pi-fw pi-lock', 
-        routerLink: '/login',
-        styleClass: 'ml-4 font-bold'
-      }
-    ];
-  }
+  constructor(public readonly themeService: ThemeService) {}
 }

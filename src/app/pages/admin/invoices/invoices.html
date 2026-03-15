@@ -1,5 +1,12 @@
-<div class="surface-card p-4 shadow-2 border-round">
-      <h2 class="m-0 mb-4 text-gray-800">Create New Invoice</h2>
+<section class="page-stack">
+      <div class="toolbar-title">
+        <small>Invoices</small>
+        <h1>Create a new invoice</h1>
+        <p class="muted-copy">The structure stays functional, but the presentation is lighter and easier to scan.</p>
+      </div>
+
+      <div class="section-card">
+      <h2 class="m-0 mb-4">Invoice details</h2>
 
       <div class="grid formgrid p-fluid">
         <div class="field col-12 md:col-4">
@@ -62,15 +69,15 @@
           </div>
         </div>
 
-        <div class="w-4 surface-100 p-3 border-round">
+        <div class="w-4 invoice-summary">
           <div class="flex justify-content-between mb-2">
-            <span class="font-semibold text-gray-600">Subtotal:</span>
+            <span class="font-semibold">Subtotal:</span>
             <span class="font-bold">₹{{ displayTotal | number:'1.2-2' }}</span>
           </div>
           <hr class="border-gray-300 border-top-1 border-none my-2" />
           <div class="flex justify-content-between text-xl">
-            <span class="font-bold text-gray-800">Total:</span>
-            <span class="font-bold text-primary">₹{{ displayTotal | number:'1.2-2' }}</span>
+            <span class="font-bold">Total:</span>
+            <span class="font-bold">₹{{ displayTotal | number:'1.2-2' }}</span>
           </div>
         </div>
       </div>
@@ -79,3 +86,4 @@
         <p-button label="Save Invoice" icon="pi pi-save" size="large" (onClick)="saveInvoice()" [disabled]="!isValid()"></p-button>
       </div>
     </div>
+</section>

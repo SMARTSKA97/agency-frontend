@@ -1,12 +1,54 @@
-<header class="p-3 shadow-2 flex justify-content-between align-items-center bg-white">
-    <div class="text-2xl font-bold text-primary cursor-pointer" routerLink="/">AgencyPro</div>
-    <p-menubar [model]="items" styleClass="border-none bg-transparent"></p-menubar>
-</header>
+<div class="app-shell public-shell">
+  <header class="public-header page-shell glass-panel">
+    <a class="brand-mark" routerLink="/">
+      <span class="brand-mark__dot"></span>
+      <span>SKA97</span>
+    </a>
 
-<main class="min-h-screen surface-ground pb-6">
+    <nav class="public-nav">
+      <a
+        *ngFor="let item of navItems"
+        [routerLink]="item.routerLink"
+        routerLinkActive="is-active"
+        [routerLinkActiveOptions]="{ exact: item.routerLink === '/' }"
+        class="nav-link"
+      >
+        {{ item.label }}
+      </a>
+    </nav>
+
+    <div class="theme-controls">
+      <p-select
+        [options]="themeService.themeOptions()"
+        [ngModel]="themeService.themeId()"
+        (ngModelChange)="themeService.setTheme($event)"
+        optionLabel="label"
+        optionValue="value"
+        appendTo="body"
+      ></p-select>
+      <p-button
+        [icon]="themeService.mode() === 'dark' ? 'pi pi-sun' : 'pi pi-moon'"
+        [text]="true"
+        [rounded]="true"
+        (onClick)="themeService.toggleMode()"
+      ></p-button>
+      <a class="nav-link nav-link--cta" routerLink="/login">Client Login</a>
+    </div>
+  </header>
+
+  <main class="public-main">
     <router-outlet></router-outlet>
-</main>
+  </main>
 
-<footer class="bg-primary text-white p-4 text-center mt-auto">
-    <p>&copy; 2026 Full-Stack Agency. All rights reserved.</p>
-</footer>
+  <footer class="page-shell public-footer glass-panel">
+    <div>
+      <strong>SKA97</strong>
+      <p>Minimal interfaces, fast builds, and a better client experience from first click to invoice.</p>
+    </div>
+    <div class="public-footer__meta">
+      <span>Multiple theme presets ready</span>
+      <span>Light and dark mode included</span>
+      <span>&copy; 2026</span>
+    </div>
+  </footer>
+</div>
