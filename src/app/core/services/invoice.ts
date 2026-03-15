@@ -20,7 +20,7 @@ export interface CreateInvoiceRequest {
   providedIn: 'root',
 })
 export class Invoice {
-  private apiUrl = 'https://localhost:5071/api/invoices'; 
+  private apiUrl = 'http://localhost:5071/api/invoices'; 
 
   constructor(private http: HttpClient) {}
 
